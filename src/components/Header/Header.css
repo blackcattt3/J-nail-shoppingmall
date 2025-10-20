@@ -1,0 +1,46 @@
+/* 헤더(상단) */
+.header{
+  height: 80px;
+  background-color: black;
+  padding: 0 20px 0 20px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 좌: 1, 가운데: auto, 우: 1 */
+  align-items: center;
+}
+.logo-img{
+  width: 80px;
+  justify-self: center; /* grid 중앙 정렬 */
+  cursor: pointer;
+}
+.header-right{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.header-icon{
+  font-size: 19px;
+  cursor : pointer;
+}
+.navBar{
+  max-height: 0;    /* 밑의 content 내용이랑 겹침 */
+  overflow: hidden; /* 겹치던 내용들 안보이게 */
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0;
+}
+.navBar.open{
+  max-height: 200px;
+  opacity: 1;
+}
+.navBar ul{
+  list-style-type: none;
+  padding: 0px;
+}
+.navBar li{
+  /* border-bottom: 1px solid black; */
+  padding: 5px 0px 5px 20px;
+  cursor: pointer;
+}
+.navBar li:hover{
+  color: gray;
+}
