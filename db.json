@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "hoppy nail",
+      "price": 12000,
+      "img": "/productImg/hoppy.jpeg",
+      "category": "New Arrival",
+      "description": "감각적인 실버 크롬 네일 아트 팁"
+    }
+  ]
+}

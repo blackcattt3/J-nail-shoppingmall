@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,12 +15,27 @@ import LookBookPage from './page/LookBookPage';
 
 function App() {
 
+  const [productList, setProductList] = useState([]);
+
+  const getProductData = async ()=>{
+    let url = new URL('http://localhost:4000/products');
+    let response = await fetch(url);
+    let data = await response.json();
+    setProductList(data);
+    console.log(data);
+  }
+
+  useEffect(()=>{
+    getProductData();
+  },[])
+
+
   return (
     <div className='app-container'>
       <Header/>
       <div className='main'>
         <Routes>
-          <Route path='/' element={<HomePage/>}/>
+          <Route path='/' element={<HomePage productList={productList}/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/about' element={<AboutPage/>}/>
           <Route path='/newarrival' element={<NewArrivalPage/>}/>
