@@ -3,13 +3,29 @@
     flex-direction: column;
     align-items: center;
 }
-.carousel-control-prev{
-    right : 50px;
+.carousel{
+    width: 70%;  /* 원하는 비율 (ex: 70~80%) */
+    max-width: 900px;
+    /* margin: 0 auto; */
+    margin: 70px 0px 30px 0px;
 }
-.carousel-control-next{
-    right : 15px;
+.carousel-control-prev,
+.carousel-control-next {
+  background: none !important; /* 버튼 배경 완전 제거 */
+  border: none !important;     /* 혹시 남아있는 테두리도 제거 */
+  opacity: 1 !important;       /* 눌렀을 때 흐려지는 것도 방지 */
+  width: auto;
 }
-
+.carousel-control-prev {
+  left: -40px; /* 왼쪽으로 화살표 밀기 */
+}
+.carousel-control-next {
+  right: -40px; /* 오른쪽으로 화살표 밀기 */
+}
+.custom-prev, .custom-next {
+  font-size: 25px;
+  color: gray;
+}
 /* 캐러셀 width 넓히기
 이미지 사진 줄이기
 아이콘들 양쪽 끝으로 밀기*/
