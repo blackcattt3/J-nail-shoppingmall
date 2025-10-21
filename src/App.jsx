@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
+import axios from 'axios'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import HomePage from './page/HomePage'
@@ -12,17 +13,29 @@ import AboutPage from './page/AboutPage';
 import NewArrivalPage from './page/NewArrivalPage';
 import BestPage from './page/BestPage';
 import LookBookPage from './page/LookBookPage';
+import PrivateRoute from './route/PrivateRoute';
 
 function App() {
 
   const [productList, setProductList] = useState([]);
+  const [authenticate, setAuthenticate] = useState(false);
+
+  // const getProductData = async ()=>{
+  //   let url = new URL('http://localhost:4000/products');
+  //   let response = await fetch(url);
+  //   let data = await response.json();
+  //   setProductList(data);
+  //   console.log(data);
+  // }
 
   const getProductData = async ()=>{
-    let url = new URL('http://localhost:4000/products');
-    let response = await fetch(url);
-    let data = await response.json();
-    setProductList(data);
-    console.log(data);
+    try{
+      const response = await axios.get('http://localhost:4000/products');
+      setProductList(response.data);
+      console.log(response.data);
+    } catch (error){
+      console.error("데이터 받기 실패", error)
+    }
   }
 
   useEffect(()=>{
@@ -41,6 +54,7 @@ function App() {
           <Route path='/newarrival' element={<NewArrivalPage/>}/>
           <Route path='/best' element={<BestPage/>}/>
           <Route path='/lookbook' element={<LookBookPage/>}/>
+          <Route path='mypage' element={<PrivateRoute/>}/>
         </Routes>
       </div>
       <Footer/>
