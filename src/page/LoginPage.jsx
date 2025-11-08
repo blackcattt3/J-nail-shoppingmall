@@ -1,16 +1,38 @@
 import React from 'react'
 import './LoginPage.css';
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({authenticate,setAuthenticate, setUser}) => {
 
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from || '/';
+
     const login = (e)=>{
         e.preventDefault();
-        console.log(e.target);
+        // console.log(e.target);
         console.log(id,password)
+        let userData = null;
+        if( id==='admin'  && password==='1234'){
+          userData = {id, role:'admin'};
+        } else if(id==='user', password='1234'){
+          userData = {id, role:'user'};
+        }
+        else{
+          alert('아이디 또는 비밀번호가 올바르지 않습니다.')
+        }
+
+        if(userData){
+          localStorage.setItem("user", JSON.stringify(userData));
+          setUser(userData);
+          navigate(from, {replace:true});
+        }
+        // setAuthenticate(true);
+        // console.log(authenticate)
     }
 
   return (
@@ -33,3 +55,6 @@ const LoginPage = () => {
 }
 
 export default LoginPage
+
+
+// 로컬스토리지로 단일사용자 로그인 상태 유지

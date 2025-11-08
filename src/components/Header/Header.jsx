@@ -9,11 +9,14 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
-const Header = () => {
+const Header = ({user, logout}) => {
   const navigate = useNavigate();
 
   const [navbarIsOpen, setNavbarIsOpen] = useState(false);
   const navRef = useRef(null);
+
+  const [loginbarIsOpen, setLoginbarIsOpen] = useState(false);
+  const loginRef = useRef(null);
 
   useEffect(()=>{
     console.log("useEffect 실행")
@@ -50,17 +53,24 @@ const Header = () => {
         <FontAwesomeIcon onClick={(e)=>{e.stopPropagation(); setNavbarIsOpen(!navbarIsOpen)}} className = 'header-icon' icon={faBars} style={{color: "#ffffff",}} />
         <img onClick={()=>{navigate('/')}} className='logo-img' src={logo}/>
         <div className='header-right'>
-          <FontAwesomeIcon onClick={()=>{navigate('/login')}} className = 'header-icon' icon={faUser} style={{color: "#ffffff",}} />
-          <FontAwesomeIcon className = 'header-icon' icon={faCartShopping} style={{color: "#ffffff",}} />
+          <FontAwesomeIcon onClick={()=>{navigate('/mypage')}} className = 'header-icon' icon={faUser} style={{color: "#ffffff",}} />
+          <FontAwesomeIcon onClick={()=>{navigate('/cart')}} className = 'header-icon' icon={faCartShopping} style={{color: "#ffffff",}} />
         </div>
       </div>
 
       <div ref={navRef} className={`navBar ${navbarIsOpen?"open":""}`}>
         <ul>
           {navBarList.map((item, index)=>(
-            <li key={index} onClick={()=>{navigate(`${item.path}`)}}>{item.name}</li>
+            <li key={index} onClick={()=>{navigate(`${item.path}`); setNavbarIsOpen(false)}}>{item.name}</li>
           ))}
+          <li ref={loginRef} className='header-login-tab' onClick={()=>{
+          user? logout(): navigate('/login');
+          setNavbarIsOpen(false)}}>
+            <div>{user?"LogOut":"LogIn"}</div>
+            <div>+</div>
+          </li>
         </ul>
+        
       </div> 
     </div>
   )

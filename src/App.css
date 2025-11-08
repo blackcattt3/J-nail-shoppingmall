@@ -22,13 +22,3 @@ html,body,#root{
   flex:1;   /* header와 footer의 남은 부분을 다 차지해라 */
   /* padding: 30px; */
 }
-
-/* product image */
-.product-img{
-  height: 300px;
-}
-.section-divider {
-  width: 100%;
-  border-bottom: 1px solid black;
-  margin: 40px 0;
-}

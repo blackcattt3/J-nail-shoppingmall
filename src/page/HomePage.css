@@ -29,3 +29,12 @@
 /* 캐러셀 width 넓히기
 이미지 사진 줄이기
 아이콘들 양쪽 끝으로 밀기*/
+/* product image */
+.product-img{
+  height: 250px;
+}
+.section-divider {
+  width: 100%;
+  border-bottom: 1px solid black;
+  margin: 40px 0;
+}

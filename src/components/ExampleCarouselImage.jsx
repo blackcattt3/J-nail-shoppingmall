@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ExampleCarouselImage = () => {
+const ExampleCarouselImage = ({img}) => {
   return (
-    <img className='product-img' src='../../public/productImg/apple1.jpeg'
+    <img className='product-img' src={img}
     style={{
         width: "100%",
         height: "100%", // 부모 높이에 맞춤
@@ -12,3 +12,5 @@ const ExampleCarouselImage = () => {
 }
 
 export default ExampleCarouselImage
+
+// '../../public/productImg/apple1.jpeg'

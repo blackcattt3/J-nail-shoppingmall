@@ -1,10 +1,14 @@
 import React from 'react'
 import './ProductCard.css';
 
-const ProductCard = () => {
+const ProductCard = ({productList}) => {
+  const img = productList?.[0]?.img;
+  console.log(img)
   return (
-    <div>
-      
+    <div className='product-card-wrapper'>
+      <div>
+        <img className='product-card-img' src={img}/>
+      </div>
     </div>
   )
 }

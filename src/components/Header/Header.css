@@ -38,9 +38,13 @@
 }
 .navBar li{
   /* border-bottom: 1px solid black; */
-  padding: 5px 0px 5px 20px;
+  padding: 5px 20px 5px 20px;
   cursor: pointer;
 }
 .navBar li:hover{
   color: gray;
+}
+.header-login-tab{
+  display: flex;
+  justify-content: space-between;
 }

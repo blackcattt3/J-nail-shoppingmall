@@ -14,12 +14,14 @@ import NewArrivalPage from './page/NewArrivalPage';
 import BestPage from './page/BestPage';
 import LookBookPage from './page/LookBookPage';
 import PrivateRoute from './route/PrivateRoute';
+import MyPage from './page/MyPage';
+import CartPage from './page/CartPage';
 
 function App() {
 
   const [productList, setProductList] = useState([]);
   const [authenticate, setAuthenticate] = useState(false);
-
+  const [user, setUser] = useState(null)
   // const getProductData = async ()=>{
   //   let url = new URL('http://localhost:4000/products');
   //   let response = await fetch(url);
@@ -32,7 +34,7 @@ function App() {
     try{
       const response = await axios.get('http://localhost:4000/products');
       setProductList(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error){
       console.error("데이터 받기 실패", error)
     }
@@ -42,19 +44,35 @@ function App() {
     getProductData();
   },[])
 
+  useEffect(()=>{
+    const savedUser = localStorage.getItem('user');
+    if(savedUser){
+      setUser(JSON.parse(savedUser));
+    }
+  },[])
+
+  const logout = ()=>{
+    localStorage.removeItem('user');
+    setUser(null);
+    alert('로그아웃 되었습니다')
+  }
 
   return (
     <div className='app-container'>
-      <Header/>
+      <Header user={user} logout={logout}/>
       <div className='main'>
+        {/* <button onClick={logout}>로그아웃</button> */}
         <Routes>
           <Route path='/' element={<HomePage productList={productList}/>}/>
-          <Route path='/login' element={<LoginPage/>}/>
+          <Route path='/login' element={<LoginPage user={user} setUser={setUser}/>}/>
           <Route path='/about' element={<AboutPage/>}/>
           <Route path='/newarrival' element={<NewArrivalPage/>}/>
           <Route path='/best' element={<BestPage/>}/>
           <Route path='/lookbook' element={<LookBookPage/>}/>
-          <Route path='mypage' element={<PrivateRoute/>}/>
+          <Route path='/mypage' element={<PrivateRoute user={user}>
+            <MyPage/>
+          </PrivateRoute>}/>
+          <Route path='/cart' element={<CartPage/>}/>
         </Routes>
       </div>
       <Footer/>

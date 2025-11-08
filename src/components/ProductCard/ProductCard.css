@@ -1,0 +1,9 @@
+.product-card-wrapper{
+    width: 280px;
+    height: 450px;
+    border: 1px solid black;
+}
+.product-card-img{
+    width: 100%;
+
+}
