@@ -29,7 +29,7 @@
   opacity: 0;
 }
 .navBar.open{
-  max-height: 200px;
+  max-height: 400px;
   opacity: 1;
 }
 .navBar ul{
@@ -44,7 +44,40 @@
 .navBar li:hover{
   color: gray;
 }
-.header-login-tab{
+.header-login-wrapper{
   display: flex;
   justify-content: space-between;
+}
+.header-login-wrapper:hover {
+  color: gray;
+}
+/* .login-tab-wrap{
+  color: #212529;
+} */
+.login-tab-wrap li{
+  padding: 3px 20px 3px 15px;
+  color: #212529;
+  font-size: 14px;
+}
+.login-tab-wrap{
+  max-height: 0;    /* 밑의 content 내용이랑 겹침 */
+  overflow: hidden; /* 겹치던 내용들 안보이게 */
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0;
+}
+.login-tab-wrap.open{
+  max-height: 400px;
+  opacity: 1;
+}
+.login-tab-wrap li:hover{
+  color: gray;
+}
+.login-tab-icon{
+  display: inline-block;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  font-size: 18px;
+}
+.login-tab-icon.open{
+  transform: rotate(180deg);
+  /* opacity: 0.2; */
 }

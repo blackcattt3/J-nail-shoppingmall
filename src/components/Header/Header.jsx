@@ -63,11 +63,34 @@ const Header = ({user, logout}) => {
           {navBarList.map((item, index)=>(
             <li key={index} onClick={()=>{navigate(`${item.path}`); setNavbarIsOpen(false)}}>{item.name}</li>
           ))}
-          <li ref={loginRef} className='header-login-tab' onClick={()=>{
-          user? logout(): navigate('/login');
-          setNavbarIsOpen(false)}}>
-            <div>{user?"LogOut":"LogIn"}</div>
-            <div>+</div>
+          <li className='header-login-tab' onClick={(e)=>{
+            e.stopPropagation();
+            setLoginbarIsOpen(!loginbarIsOpen);
+            console.log(loginbarIsOpen)
+
+          // user? logout(): navigate('/login');
+          // setNavbarIsOpen(false)
+          }}>
+            <div className='header-login-wrapper' >
+              <div>LogIn</div>
+              <div className={`login-tab-icon ${loginbarIsOpen?"open":""}`}>{loginbarIsOpen?'-':'+'}</div>
+            </div>
+            <ul className={`login-tab-wrap ${loginbarIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
+              <li onClick={()=>{
+                if(user){
+                  logout();
+                  navigate('/');
+                  setNavbarIsOpen(false);
+                  setLoginbarIsOpen(false);
+                } else{
+                  navigate('/login');
+                  setNavbarIsOpen(false);
+                  setLoginbarIsOpen(false);
+                }}}>{user?'Logout':'Login'}</li>
+              <li>Register</li>
+              <li onClick={()=>{navigate('/mypage'); setNavbarIsOpen(false); setLoginbarIsOpen(false)}}>My page</li>
+            </ul>
+            
           </li>
         </ul>
         
