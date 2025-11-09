@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ProductContext } from '../contexts/ProductContext';
 import './HomePage.css';
 import Carousel from 'react-bootstrap/Carousel';
 import ExampleCarouselImage from '../components/ExampleCarouselImage';
 import mainFontImg from '../assets/img/main_font.png'
 import ProductCard from '../components/ProductCard/ProductCard';
 
-const HomePage = ({productList}) => {
+const HomePage = () => {
+    const { productList } = useContext(ProductContext);
+
+    const product = productList[0]
     const img = productList?.[0]?.img;
-    // console.log(productList)
+    // console.log(product)
     // console.log('img', img)
   return (
     <div className='homepage'>
@@ -34,7 +38,7 @@ const HomePage = ({productList}) => {
         </Carousel>
         <span className='section-divider'></span>
         <img className='product-img' src={mainFontImg}/>
-        <ProductCard productList={productList}/>
+        <ProductCard product={product}/>
     </div>
   )
 }

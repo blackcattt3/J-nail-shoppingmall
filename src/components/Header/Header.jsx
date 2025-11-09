@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { UserContext } from '../../contexts/UserContext';
 import './Header.css';
 import logo from '../../assets/img/main_logo.png'
 import { useState, useEffect, useRef } from 'react';
@@ -9,7 +10,9 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
-const Header = ({user, logout}) => {
+const Header = () => {
+  const { user, logout } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const [navbarIsOpen, setNavbarIsOpen] = useState(false);
@@ -41,6 +44,7 @@ const Header = ({user, logout}) => {
 
   const navBarList = [
     { name: 'About', path:'/about'},
+    { name: 'All', path:'/all'},
     { name: 'New Arrival', path:'/newarrival'},
     { name: 'Best', path:'/best'},
     { name: 'Look Book', path:'/lookbook'},

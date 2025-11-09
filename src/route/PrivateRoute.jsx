@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
+import { UserContext } from '../contexts/UserContext';
 
-const PrivateRoute = ({children, user}) => {
+const PrivateRoute = ({children}) => {
+  const {user} = useContext(UserContext);
   const location = useLocation();
   
   if(!user){

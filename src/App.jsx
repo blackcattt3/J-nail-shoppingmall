@@ -16,6 +16,9 @@ import LookBookPage from './page/LookBookPage';
 import PrivateRoute from './route/PrivateRoute';
 import MyPage from './page/MyPage';
 import CartPage from './page/CartPage';
+import AllProductPage from './page/AllProductPage';
+import { UserContext } from './contexts/UserContext'
+import { ProductContext } from './contexts/ProductContext';
 
 function App() {
 
@@ -58,25 +61,31 @@ function App() {
   }
 
   return (
-    <div className='app-container'>
-      <Header user={user} logout={logout}/>
-      <div className='main'>
-        {/* <button onClick={logout}>로그아웃</button> */}
-        <Routes>
-          <Route path='/' element={<HomePage productList={productList}/>}/>
-          <Route path='/login' element={<LoginPage user={user} setUser={setUser}/>}/>
-          <Route path='/about' element={<AboutPage/>}/>
-          <Route path='/newarrival' element={<NewArrivalPage/>}/>
-          <Route path='/best' element={<BestPage/>}/>
-          <Route path='/lookbook' element={<LookBookPage/>}/>
-          <Route path='/mypage' element={<PrivateRoute user={user}>
-            <MyPage/>
-          </PrivateRoute>}/>
-          <Route path='/cart' element={<CartPage/>}/>
-        </Routes>
-      </div>
-      <Footer/>
-    </div>
+    <UserContext.Provider value={{ user, setUser, logout }}>
+      <ProductContext.Provider value={{productList}}>
+        <div className='app-container'>
+          <Header/>
+          <div className='main'>
+            {/* <button onClick={logout}>로그아웃</button> */}
+            <Routes>
+              <Route path='/' element={<HomePage/>}/>
+              <Route path='/login' element={<LoginPage/>}/>
+              <Route path='/about' element={<AboutPage/>}/>
+              <Route path='/all' element={<AllProductPage/>}/>
+              <Route path='/newarrival' element={<NewArrivalPage/>}/>
+              <Route path='/best' element={<BestPage/>}/>
+              <Route path='/lookbook' element={<LookBookPage/>}/>
+              <Route path='/mypage' element={<PrivateRoute>
+                <MyPage/>
+              </PrivateRoute>}/>
+              <Route path='/cart' element={<CartPage/>}/>
+            </Routes>
+          </div>
+          <Footer/>
+        </div>
+      </ProductContext.Provider>
+    </UserContext.Provider>
+    
   )
 }
 
