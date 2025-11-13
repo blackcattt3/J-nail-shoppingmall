@@ -21,5 +21,4 @@ html,body,#root{
 .main{
   flex:1;   /* header와 footer의 남은 부분을 다 차지해라 */
   /* padding: 30px; */
-  padding: 20px;
 }
