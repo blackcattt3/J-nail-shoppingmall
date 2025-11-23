@@ -3,9 +3,9 @@ import { UserContext } from '../../contexts/UserContext';
 import './Header.css';
 import logo from '../../assets/img/main_logo.png'
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation  } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faL } from '@fortawesome/free-solid-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,32 +18,78 @@ const Header = () => {
   const [navbarIsOpen, setNavbarIsOpen] = useState(false);
   const navRef = useRef(null);
 
-  const [loginbarIsOpen, setLoginbarIsOpen] = useState(false);
+  const [loginTabIsOpen, setLoginTabIsOpen] = useState(false);
   const loginRef = useRef(null);
 
   const [infoTabIsOpen, setInfoTabIsOpen] = useState(false);
   const infoRef = useRef(null)
 
+  // useEffect(()=>{
+  //   // console.log("useEffect 실행")
+  //   // 외부 클릭 감지 함수
+  //   const handleOutSideClick = (e)=>{
+  //     if(navbarIsOpen && navRef.current && !navRef.current.contains(e.target)){
+  //       // console.log(e.target);
+  //       // 이때 e.target은 클릭된 객체를 의미. ex) footer 클릭했을때 <div class="footer"></div> 이런식으로 찍힘.
+  //       setNavbarIsOpen(false)
+  //     }
+  //   }
+  //   if(navbarIsOpen){
+  //     // 이벤트리스너는 매개변수 붙이지 않아도 자동으로 이벤트객체를 전달한다)
+  //     document.addEventListener("click", handleOutSideClick);
+  //   }
+  //   // return의 역할 : navbarIsOpen의 true/false 여부와 상관없이 useEffect 실행전에 이전 이벤트제거를 실행한다.
+  //   return ()=>{
+  //     console.log("이전 이벤트 제거");
+  //     document.removeEventListener('click', handleOutSideClick)
+  //   }
+  // },[navbarIsOpen])
+
+  const location = useLocation();
+  // 경로 이동되면 닫히게.
   useEffect(()=>{
-    console.log("useEffect 실행")
-    // 외부 클릭 감지 함수
+    setNavbarIsOpen(false);
+    setInfoTabIsOpen(false);
+    setLoginTabIsOpen(false);
+  },[location.pathname])
+
+
+  // 외부클릭 감지
+  useEffect(()=>{
     const handleOutSideClick = (e)=>{
-      if(navbarIsOpen && navRef.current && !navRef.current.contains(e.target)){
-        // console.log(e.target);
-        // 이때 e.target은 클릭된 객체를 의미. ex) footer 클릭했을때 <div class="footer"></div> 이런식으로 찍힘.
-        setNavbarIsOpen(false)
+      const navEl = navRef.current;
+      const infoEl = infoEl.current;
+      const loginEl = loginEl.current;
+
+      if(navbarIsOpen && navEl && !navEl.contains(e.target)){
+        setNavbarIsOpen(false);
+        setInfoTabIsOpen(false);
+        setLoginTabIsOpen(false);
       }
+
+      if(infoTabIsOpen && infoEl && !infoEl.contains(e.target)){
+        setInfoTabIsOpen(false);
+      }
+
+      if(loginTabIsOpen && loginEl && !loginEl.contains(e.target)){
+        setLoginTabIsOpen(false);
+      }
+      
+      document.addEventListener('click', handleOutSideClick)
+
+      return ()=>{
+        document.removeEventListener('click', handleOutSideClick)
+      }
+
     }
-    if(navbarIsOpen){
-      // 이벤트리스너는 매개변수 붙이지 않아도 자동으로 이벤트객체를 전달한다)
-      document.addEventListener("click", handleOutSideClick);
-    }
-    // return의 역할 : navbarIsOpen의 true/false 여부와 상관없이 useEffect 실행전에 이전 이벤트제거를 실행한다.
-    return ()=>{
-      console.log("이전 이벤트 제거");
-      document.removeEventListener('click', handleOutSideClick)
-    }
-  },[navbarIsOpen])
+  },[navbarIsOpen, infoTabIsOpen, loginTabIsOpen])
+
+
+
+
+  
+
+
 
   const navBarList = [
     { name: 'About', path:'/about'},
@@ -79,9 +125,10 @@ const Header = () => {
             <li key={index} onClick={()=>{navigate(`${item.path}`); setNavbarIsOpen(false)}}>{item.name}</li>
           ))}
 
-          <li className='header-detail-tab' onClick={(e)=>{
+          <li ref={infoRef} className='header-detail-tab' onClick={(e)=>{
             e.stopPropagation();
             setInfoTabIsOpen(!infoTabIsOpen);
+            setLoginTabIsOpen(false);
             // console.log(infoTabIsOpen)
           }}>
             <div className='header-detail-wrapper'>
@@ -98,32 +145,33 @@ const Header = () => {
             </ul>
           </li>
 
-          <li className='header-detail-tab' onClick={(e)=>{
+          <li ref={loginRef} className='header-detail-tab' onClick={(e)=>{
             e.stopPropagation();
-            setLoginbarIsOpen(!loginbarIsOpen);
-            // console.log(loginbarIsOpen)
+            setLoginTabIsOpen(!loginTabIsOpen);
+            setInfoTabIsOpen(false);
+            // console.log(loginTabIsOpen)
 
           // user? logout(): navigate('/login');
           // setNavbarIsOpen(false)
           }}>
             <div className='header-detail-wrapper' >
               <div>LogIn</div>
-              <div className={`detail-tab-icon ${loginbarIsOpen?"open":""}`}>{loginbarIsOpen?'-':'+'}</div>
+              <div className={`detail-tab-icon ${loginTabIsOpen?"open":""}`}>{loginTabIsOpen?'-':'+'}</div>
             </div>
-            <ul className={`detail-tab-wrap ${loginbarIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
+            <ul className={`detail-tab-wrap ${loginTabIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
               <li onClick={()=>{
                 if(user){
                   logout();
                   navigate('/');
                   setNavbarIsOpen(false);
-                  setLoginbarIsOpen(false);
+                  setLoginTabIsOpen(false);
                 } else{
                   navigate('/login');
                   setNavbarIsOpen(false);
-                  setLoginbarIsOpen(false);
+                  setLoginTabIsOpen(false);
                 }}}>{user?'Logout':'Login'}</li>
               <li>Register</li>
-              <li onClick={()=>{navigate('/mypage'); setNavbarIsOpen(false); setLoginbarIsOpen(false)}}>My page</li>
+              <li onClick={()=>{navigate('/mypage'); setNavbarIsOpen(false); setLoginTabIsOpen(false)}}>My page</li>
             </ul>
             
           </li>
