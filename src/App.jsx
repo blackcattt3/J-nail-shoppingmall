@@ -17,6 +17,7 @@ import PrivateRoute from './route/PrivateRoute';
 import MyPage from './page/MyPage';
 import CartPage from './page/CartPage';
 import AllProductPage from './page/AllProductPage';
+import NoticePage from './page/NoticePage';
 import { UserContext } from './contexts/UserContext'
 import { ProductContext } from './contexts/ProductContext';
 
@@ -70,6 +71,7 @@ function App() {
             <Routes>
               <Route path='/' element={<HomePage/>}/>
               <Route path='/login' element={<LoginPage/>}/>
+              <Route path='/notice' element={<NoticePage/>}/>
               <Route path='/about' element={<AboutPage/>}/>
               <Route path='/all' element={<AllProductPage/>}/>
               <Route path='/newarrival' element={<NewArrivalPage/>}/>

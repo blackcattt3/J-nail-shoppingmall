@@ -21,6 +21,9 @@ const Header = () => {
   const [loginbarIsOpen, setLoginbarIsOpen] = useState(false);
   const loginRef = useRef(null);
 
+  const [infoTabIsOpen, setInfoTabIsOpen] = useState(false);
+  const infoRef = useRef(null)
+
   useEffect(()=>{
     console.log("useEffect 실행")
     // 외부 클릭 감지 함수
@@ -50,6 +53,14 @@ const Header = () => {
     { name: 'Look Book', path:'/lookbook'},
   ]
 
+  const InfoTabList = [
+
+  ]
+
+  const LogInTabList = [
+
+  ]
+
 
   return (
     <div>
@@ -67,19 +78,39 @@ const Header = () => {
           {navBarList.map((item, index)=>(
             <li key={index} onClick={()=>{navigate(`${item.path}`); setNavbarIsOpen(false)}}>{item.name}</li>
           ))}
-          <li className='header-login-tab' onClick={(e)=>{
+
+          <li className='header-detail-tab' onClick={(e)=>{
+            e.stopPropagation();
+            setInfoTabIsOpen(!infoTabIsOpen);
+            // console.log(infoTabIsOpen)
+          }}>
+            <div className='header-detail-wrapper'>
+              <div>Info</div>
+              <div className={`detail-tab-icon ${infoTabIsOpen?"open":""}`}>{infoTabIsOpen?'-':'+'}</div>
+            </div>
+            <ul className={`detail-tab-wrap ${infoTabIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
+              <li onClick={()=>{
+                navigate('/notice');
+                setInfoTabIsOpen(false);
+                setNavbarIsOpen(false);
+              }}>Notice</li>
+              <li>About</li>
+            </ul>
+          </li>
+
+          <li className='header-detail-tab' onClick={(e)=>{
             e.stopPropagation();
             setLoginbarIsOpen(!loginbarIsOpen);
-            console.log(loginbarIsOpen)
+            // console.log(loginbarIsOpen)
 
           // user? logout(): navigate('/login');
           // setNavbarIsOpen(false)
           }}>
-            <div className='header-login-wrapper' >
+            <div className='header-detail-wrapper' >
               <div>LogIn</div>
-              <div className={`login-tab-icon ${loginbarIsOpen?"open":""}`}>{loginbarIsOpen?'-':'+'}</div>
+              <div className={`detail-tab-icon ${loginbarIsOpen?"open":""}`}>{loginbarIsOpen?'-':'+'}</div>
             </div>
-            <ul className={`login-tab-wrap ${loginbarIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
+            <ul className={`detail-tab-wrap ${loginbarIsOpen?"open":""}`} onClick={(e)=>{e.stopPropagation()}}>
               <li onClick={()=>{
                 if(user){
                   logout();
