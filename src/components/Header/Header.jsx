@@ -58,8 +58,8 @@ const Header = () => {
   useEffect(()=>{
     const handleOutSideClick = (e)=>{
       const navEl = navRef.current;
-      const infoEl = infoEl.current;
-      const loginEl = loginEl.current;
+      const infoEl = infoRef.current;
+      const loginEl = loginRef.current;
 
       if(navbarIsOpen && navEl && !navEl.contains(e.target)){
         setNavbarIsOpen(false);
