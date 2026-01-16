@@ -10,7 +10,9 @@ const HomePage = () => {
     const { productList } = useContext(ProductContext);
 
     const product = productList[0]
-    const img = productList?.[0]?.img;
+    const firstImg = productList?.[0]?.img[0];
+    const secondImg = productList?.[1]?.img[0];
+    const thirdImg = productList?.[2]?.img[0];
     // console.log(product)
     // console.log('img', img)
   return (
@@ -22,17 +24,17 @@ const HomePage = () => {
             nextIcon={<span className="custom-next">❯</span>}>
             <Carousel.Item interval={2000} pause='hover'>
                 <div className="carousel-item-wrapper">
-                    <ExampleCarouselImage img={img}/>
+                    <ExampleCarouselImage img={firstImg}/>
                 </div>
             </Carousel.Item>
             <Carousel.Item interval={2000} pause='hover'>
                 <div className="carousel-item-wrapper">
-                    <ExampleCarouselImage img={img}/>
+                    <ExampleCarouselImage img={secondImg}/>
                 </div>
             </Carousel.Item>
             <Carousel.Item interval={2000} pause='hover'>
                 <div className="carousel-item-wrapper">
-                    <ExampleCarouselImage img={img}/>
+                    <ExampleCarouselImage img={thirdImg}/>
                 </div>
             </Carousel.Item>
         </Carousel>

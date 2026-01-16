@@ -8,7 +8,7 @@ const LoginPage = () => {
     const { setUser } = useContext(UserContext)
 
     const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
+    let [password, setPassword] = useState('');
 
     const navigate = useNavigate();
     const location = useLocation();

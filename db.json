@@ -1,12 +1,205 @@
 {
   "products": [
     {
-      "id": 0,
-      "name": "hoppy nail",
+      "id": 1,
+      "name": "apple",
+      "price": 10000,
+      "img": [
+        "/productImg/apple/apple1.jpeg",
+        "/productImg/apple/apple2.jpeg",
+        "/productImg/apple/apple3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 2,
+      "name": "beige",
+      "price": 10000,
+      "img": [
+        "/productImg/beige/beige1.jpeg",
+        "/productImg/beige/beige2.jpeg",
+        "/productImg/beige/beige3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 3,
+      "name": "blackchrome",
+      "price": 10000,
+      "img": [
+        "/productImg/blackchrome/blackchrome1.jpeg",
+        "/productImg/blackchrome/blackchrome2.jpeg",
+        "/productImg/blackchrome/blackchrome3.jpeg",
+        "/productImg/blackchrome/blackchrome4.jpeg",
+        "/productImg/blackchrome/blackchrome5.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 4,
+      "name": "blackwaterpainting",
+      "price": 10000,
+      "img": [
+        "/productImg/blackwaterpainting/blackwaterpainting1.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting2.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting3.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting4.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 5,
+      "name": "bluesparkle",
+      "price": 10000,
+      "img": [
+        "/productImg/bluesparkle/bluesparkle1.jpeg",
+        "/productImg/bluesparkle/bluesparkle2.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 6,
+      "name": "check",
+      "price": 10000,
+      "img": ["/productImg/check/check1.jpeg"],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 7,
+      "name": "diamond",
+      "price": 10000,
+      "img": [
+        "/productImg/diamond/diamond1.jpeg",
+        "/productImg/diamond/diamond2.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 8,
+      "name": "gradation",
+      "price": 10000,
+      "img": [
+        "/productImg/gradation/gradation1.jpeg",
+        "/productImg/gradation/gradation2.jpeg",
+        "/productImg/gradation/gradation3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 9,
+      "name": "hoppy",
       "price": 12000,
-      "img": "/productImg/hoppy/hoppy1.jpeg",
-      "category": "New Arrival",
-      "description": "가을맞이 호피네일"
+      "img": [
+        "/productImg/hoppy/hoppy1.jpeg",
+        "/productImg/hoppy/hoppy2.jpeg",
+        "/productImg/hoppy/hoppy3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "new",
+      "description": "가을맞이 호피네일",
+      "stock": 15
+    },
+    {
+      "id": 10,
+      "name": "mauve",
+      "price": 10000,
+      "img": [
+        "/productImg/mauve/mauve1.jpeg",
+        "/productImg/mauve/mauve2.jpeg",
+        "/productImg/mauve/mauve3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 11,
+      "name": "redchain",
+      "price": 10000,
+      "img": [
+        "/productImg/redchain/redchain1.jpeg",
+        "/productImg/redchain/redchain2.jpeg",
+        "/productImg/redchain/redchain3.jpeg",
+        "/productImg/redchain/redchain4.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 12,
+      "name": "redwine",
+      "price": 10000,
+      "img": ["/productImg/redwine/redwine1.jpeg"],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 13,
+      "name": "sparkle",
+      "price": 10000,
+      "img": [
+        "/productImg/sparkle/sparkle1.jpeg",
+        "/productImg/sparkle/sparkle2.jpeg",
+        "/productImg/sparkle/sparkle3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 14,
+      "name": "whitegradation",
+      "price": 10000,
+      "img": ["/productImg/whitegradation/whitegradation1.jpeg"],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
+    },
+    {
+      "id": 15,
+      "name": "wine",
+      "price": 10000,
+      "img": [
+        "/productImg/wine/wine1.jpeg",
+        "/productImg/wine/wine2.jpeg",
+        "/productImg/wine/wine3.jpeg"
+      ],
+      "category": "gel",
+      "tags": "",
+      "description": "",
+      "stock": 15
     }
+    
   ]
 }
