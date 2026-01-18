@@ -93,7 +93,7 @@ const Header = () => {
 
   const navBarList = [
     { name: 'About', path:'/about'},
-    { name: 'All', path:'/all'},
+    { name: 'All', path:'/products'},
     { name: 'New Arrival', path:'/newarrival'},
     { name: 'Best', path:'/best'},
     { name: 'Look Book', path:'/lookbook'},

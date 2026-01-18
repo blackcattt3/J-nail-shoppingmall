@@ -20,6 +20,9 @@ import AllProductPage from './page/AllProductPage';
 import NoticePage from './page/NoticePage';
 import { UserContext } from './contexts/UserContext'
 import { ProductContext } from './contexts/ProductContext';
+import ProductDetailPage from './page/ProductDetailPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -73,7 +76,8 @@ function App() {
               <Route path='/login' element={<LoginPage/>}/>
               <Route path='/notice' element={<NoticePage/>}/>
               <Route path='/about' element={<AboutPage/>}/>
-              <Route path='/all' element={<AllProductPage/>}/>
+              <Route path='/products' element={<AllProductPage/>}/>
+              <Route path='/products/:id' element={<ProductDetailPage/>}/>
               <Route path='/newarrival' element={<NewArrivalPage/>}/>
               <Route path='/best' element={<BestPage/>}/>
               <Route path='/lookbook' element={<LookBookPage/>}/>
@@ -84,6 +88,7 @@ function App() {
             </Routes>
           </div>
           <Footer/>
+          <ToastContainer/>
         </div>
       </ProductContext.Provider>
     </UserContext.Provider>

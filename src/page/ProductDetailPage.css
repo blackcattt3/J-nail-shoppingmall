@@ -1,0 +1,83 @@
+.loading-screen{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detail-wrapper{
+    padding: 50px;
+    /* min-height: 100vh; */
+}
+.detail-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.detail-img{
+    width: 250px;
+}
+.detail-img-list{
+    width: 50px;
+    margin: 3px 5px;
+    transition: transform 0.3s ease;
+}
+.detail-img-list.current{
+    filter: brightness(0.6);
+    transform: scale(1.06);
+}
+.detail-img-list:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+.quantity-wrapper{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px;
+}
+.quantity{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.qty-btn{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qty-btn:hover{
+    cursor: pointer;
+}
+.qty-symbol{
+  transform: translateY(-1px); /* -1px ~ -2px 사이에서 취향대로 */
+}
+.order-btn-wrapper{
+    width: 300px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.buy-btn{
+    background-color: black;
+    color: whitesmoke;
+    padding: 5px 30px;
+    text-align: center;
+}
+.cart-btn{
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px 30px;
+}
+.qty-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
