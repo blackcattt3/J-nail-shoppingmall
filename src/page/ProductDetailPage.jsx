@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './ProductDetailPage.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const ProductDetailPage = () => {
+
+    useEffect(() => {
+  console.log("✅ ProductDetailPage mounted");
+  return () => console.log("❌ ProductDetailPage unmounted");
+}, []);
+
+    const navigate = useNavigate();
     const {id} = useParams()
     // console.log('상품id: ', id);
     const [product, setProduct] = useState(null)
@@ -33,6 +40,7 @@ const ProductDetailPage = () => {
     const stock = product?.stock;
     const price = product?.price
     const totalPrice = (price*qty).toLocaleString();
+    const CART_KEY = 'cartItems';
 
     const handleDecrease = ()=>{
         setQty(prev=> Math.max(1, prev-1))
@@ -40,16 +48,69 @@ const ProductDetailPage = () => {
     const handleIncrease = ()=>{
         setQty(prev=> Math.min(stock, prev+1))
     }
-    const handleAddToCart = ()=>{
-        toast.success('장바구니에 담겼습니다 🛒');
-        console.log("cart")
+    
+    
+    const getCartItems = ()=>{
+        return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    };
+    const saveCartItems = (items)=>{
+        localStorage.setItem(CART_KEY, JSON.stringify(items));
     }
+    const handleAddToCart = ()=>{
+        const cartItems = getCartItems();
+        const existingItem = cartItems.find((item)=>{
+            return item.id === product.id
+        })
+        if (existingItem){
+            const updatedCart = cartItems.map((item=>{
+                return item.id === product.id? {...item, qty:item.qty+qty}
+                : item
+            }))
+            saveCartItems(updatedCart);
+            toast.info('수량이 추가되었습니다');
+        } else{
+            const newItem = {
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                img: product.img[0],
+                qty: qty
+            };
+
+            saveCartItems([...cartItems, newItem])
+            toast.success('장바구니에 담겼습니다 🛒');
+            console.log("cart")
+        }
+    }
+
+    const handleBuyNow = ()=>{
+        if(stock === 0){
+            toast.error('‼️ 품절된 상품입니다')
+            return;
+        }
+        navigate('/checkout', {
+            state: {
+                items: [
+                    {
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        img: product.img[0],
+                        qty
+                    }
+                ]
+            }
+        })
+        console.log('buy now')
+    }
+
 
     if(product === null){
 
     }
     if(!product){
-        return <div className='loading-screen'>
+        return <div
+         className='loading-screen'>
             <h2>상품이 존재하지 않습니다 😭</h2>
         </div>
     }
@@ -79,12 +140,13 @@ const ProductDetailPage = () => {
             </div>
             <div>total : ₩{totalPrice} ({qty}개)</div>
             <div className='order-btn-wrapper'>
-                <div className='buy-btn'>Buy Now</div>
+                <div className='buy-btn' onClick={handleBuyNow}>Buy Now</div>
                 <div className='cart-btn' onClick={handleAddToCart}>Add to cart</div>
             </div>
         </div>
     </div>
   )
 }
+
 
 export default ProductDetailPage

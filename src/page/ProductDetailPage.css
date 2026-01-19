@@ -77,6 +77,9 @@
     border: 1px solid black;
     padding: 5px 30px;
 }
+.buy-btn:hover, .cart-btn:hover{
+    cursor: pointer;
+}
 .qty-btn.disabled {
   opacity: 0.3;
   pointer-events: none;

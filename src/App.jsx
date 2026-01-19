@@ -23,6 +23,8 @@ import { ProductContext } from './contexts/ProductContext';
 import ProductDetailPage from './page/ProductDetailPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CheckoutPage from './page/CheckoutPage';
+import OrderPage from './page/OrderPage';
 
 function App() {
 
@@ -78,6 +80,8 @@ function App() {
               <Route path='/about' element={<AboutPage/>}/>
               <Route path='/products' element={<AllProductPage/>}/>
               <Route path='/products/:id' element={<ProductDetailPage/>}/>
+              <Route path='/checkout' element={<CheckoutPage/>}/>
+              <Route path='/order' element={<OrderPage/>}/>
               <Route path='/newarrival' element={<NewArrivalPage/>}/>
               <Route path='/best' element={<BestPage/>}/>
               <Route path='/lookbook' element={<LookBookPage/>}/>

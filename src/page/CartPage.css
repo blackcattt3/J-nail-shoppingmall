@@ -1,0 +1,14 @@
+.qty-btn{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qty-symbol{
+  transform: translateY(-1px); /* -1px ~ -2px 사이에서 취향대로 */
+}

@@ -55,34 +55,60 @@ const Header = () => {
 
 
   // 외부클릭 감지
-  useEffect(()=>{
-    const handleOutSideClick = (e)=>{
-      const navEl = navRef.current;
-      const infoEl = infoRef.current;
-      const loginEl = loginRef.current;
+  // useEffect(()=>{
+  //   const handleOutSideClick = (e)=>{
+  //     const navEl = navRef.current;
+  //     const infoEl = infoRef.current;
+  //     const loginEl = loginRef.current;
 
-      if(navbarIsOpen && navEl && !navEl.contains(e.target)){
-        setNavbarIsOpen(false);
-        setInfoTabIsOpen(false);
-        setLoginTabIsOpen(false);
-      }
+  //     if(navbarIsOpen && navEl && !navEl.contains(e.target)){
+  //       setNavbarIsOpen(false);
+  //       setInfoTabIsOpen(false);
+  //       setLoginTabIsOpen(false);
+  //     }
 
-      if(infoTabIsOpen && infoEl && !infoEl.contains(e.target)){
-        setInfoTabIsOpen(false);
-      }
+  //     if(infoTabIsOpen && infoEl && !infoEl.contains(e.target)){
+  //       setInfoTabIsOpen(false);
+  //     }
 
-      if(loginTabIsOpen && loginEl && !loginEl.contains(e.target)){
-        setLoginTabIsOpen(false);
-      }
+  //     if(loginTabIsOpen && loginEl && !loginEl.contains(e.target)){
+  //       setLoginTabIsOpen(false);
+  //     }
       
-      document.addEventListener('click', handleOutSideClick)
+  //     document.addEventListener('click', handleOutSideClick)
 
-      return ()=>{
-        document.removeEventListener('click', handleOutSideClick)
-      }
+  //     return ()=>{
+  //       document.removeEventListener('click', handleOutSideClick)
+  //     }
 
+  //   }
+  // },[navbarIsOpen, infoTabIsOpen, loginTabIsOpen])
+
+  useEffect(() => {
+  const handleOutSideClick = (e) => {
+    const navEl = navRef.current;
+    const infoEl = infoRef.current;
+    const loginEl = loginRef.current;
+
+    if (navbarIsOpen && navEl && !navEl.contains(e.target)) {
+      setNavbarIsOpen(false);
+      setInfoTabIsOpen(false);
+      setLoginTabIsOpen(false);
     }
-  },[navbarIsOpen, infoTabIsOpen, loginTabIsOpen])
+
+    if (infoTabIsOpen && infoEl && !infoEl.contains(e.target)) {
+      setInfoTabIsOpen(false);
+    }
+
+    if (loginTabIsOpen && loginEl && !loginEl.contains(e.target)) {
+      setLoginTabIsOpen(false);
+    }
+  };
+
+  document.addEventListener('click', handleOutSideClick);
+  return () => document.removeEventListener('click', handleOutSideClick);
+}, [navbarIsOpen, infoTabIsOpen, loginTabIsOpen]);
+
 
 
 
