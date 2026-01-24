@@ -22,6 +22,7 @@ const ProductDetailPage = () => {
         // let response = await fetch('http://localhost:4000/products/${id}');
         // let data = await response.json();
         try{
+            setProduct(null)
             const response = await axios.get(`http://localhost:4000/products/${id}`)
             setProduct(response.data);
             console.log(response.data)
@@ -106,11 +107,14 @@ const ProductDetailPage = () => {
 
 
     if(product === null){
-
+        return (
+            <div className="loading-screen">
+            <h2>상품 정보를 불러오는 중...</h2>
+            </div>
+        );
     }
     if(!product){
-        return <div
-         className='loading-screen'>
+        return <div className='loading-screen'>
             <h2>상품이 존재하지 않습니다 😭</h2>
         </div>
     }
