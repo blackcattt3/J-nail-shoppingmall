@@ -21,7 +21,7 @@ const LoginPage = () => {
         let userData = null;
         if( id==='admin'  && password==='1234'){
           userData = {id, role:'admin'};
-        } else if(id==='user', password='1234'){
+        } else if(id==='user', password==='1234'){
           userData = {id, role:'user'};
         }
         else{

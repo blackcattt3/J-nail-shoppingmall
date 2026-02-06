@@ -30,7 +30,10 @@ function App() {
 
   const [productList, setProductList] = useState([]);
   const [authenticate, setAuthenticate] = useState(false);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   // const getProductData = async ()=>{
   //   let url = new URL('http://localhost:4000/products');
   //   let response = await fetch(url);
