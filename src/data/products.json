@@ -1,0 +1,203 @@
+[
+    {
+      "id": 1,
+      "name": "apple",
+      "price": 10000,
+      "img": [
+        "/productImg/apple/apple1.jpeg",
+        "/productImg/apple/apple2.jpeg",
+        "/productImg/apple/apple3.jpeg"
+      ],
+      "category": "gel",
+      "tags":["new","pink"],
+      "description": "사과 포인트를 담은 입체 젤네일",
+      "stock": 15
+    },
+    {
+      "id": 2,
+      "name": "beige",
+      "price": 10000,
+      "img": [
+        "/productImg/beige/beige1.jpeg",
+        "/productImg/beige/beige2.jpeg",
+        "/productImg/beige/beige3.jpeg"
+      ],
+      "category": "gel",
+      "tags":["best", "simple"],
+      "description": "심플한 아몬드 쉐입 누드톤 네일",
+      "stock": 15
+    },
+    {
+      "id": 3,
+      "name": "blackchrome",
+      "price": 10000,
+      "img": [
+        "/productImg/blackchrome/blackchrome1.jpeg",
+        "/productImg/blackchrome/blackchrome2.jpeg",
+        "/productImg/blackchrome/blackchrome3.jpeg",
+        "/productImg/blackchrome/blackchrome4.jpeg",
+        "/productImg/blackchrome/blackchrome5.jpeg"
+      ],
+      "category": "gel",
+      "tags":["best", "black"],
+      "description": "크롬 무드가 담긴 시크한 쇠맛 네일",
+      "stock": 15
+    },
+    {
+      "id": 4,
+      "name": "blackwaterpainting",
+      "price": 10000,
+      "img": [
+        "/productImg/blackwaterpainting/blackwaterpainting1.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting2.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting3.jpeg",
+        "/productImg/blackwaterpainting/blackwaterpainting4.jpeg"
+      ],
+      "category": "gel",
+      "tags":["best", "black"],
+      "description": "화려하면서도 심플한 블랙 수채화 네일",
+      "stock": 15
+    },
+    {
+      "id": 5,
+      "name": "bluesparkle",
+      "price": 10000,
+      "img": [
+        "/productImg/bluesparkle/bluesparkle1.jpeg",
+        "/productImg/bluesparkle/bluesparkle2.jpeg"
+      ],
+      "category": "gel",
+      "tags":["blue", "gradation"],
+      "description": "바다가 생각나는 푸른 빛 마그넷 그라데이션 네일",
+      "stock": 15
+    },
+    {
+      "id": 6,
+      "name": "check",
+      "price": 10000,
+      "img": ["/productImg/check/check1.jpeg"],
+      "category": "gel",
+      "tags":["green"],
+      "description": "귀여운 무드의 체크 포인트 네일",
+      "stock": 15
+    },
+    {
+      "id": 7,
+      "name": "diamond",
+      "price": 10000,
+      "img": [
+        "/productImg/diamond/diamond1.jpeg",
+        "/productImg/diamond/diamond2.jpeg"
+      ],
+      "category": "gel",
+      "tags":["wedding", "beige"],
+      "description": "손톱 끝에 보석을 박은 웨딩 무드의 네일",
+      "stock": 15
+    },
+    {
+      "id": 8,
+      "name": "gradation",
+      "price": 10000,
+      "img": [
+        "/productImg/gradation/gradation1.jpeg",
+        "/productImg/gradation/gradation2.jpeg",
+        "/productImg/gradation/gradation3.jpeg"
+      ],
+      "category": "gel",
+      "tags":["gradation"],
+      "description": "강렬하면서 유니크한 색채가 들어있는 쇠맛 그라데이션 네일",
+      "stock": 15
+    },
+    {
+      "id": 9,
+      "name": "hoppy",
+      "price": 12000,
+      "img": [
+        "/productImg/hoppy/hoppy1.jpeg",
+        "/productImg/hoppy/hoppy2.jpeg",
+        "/productImg/hoppy/hoppy3.jpeg"
+      ],
+      "category": "gel",
+      "tags": ["new"],
+      "description": "가을맞이 호피네일",
+      "stock": 15
+    },
+    {
+      "id": 10,
+      "name": "mauve",
+      "price": 10000,
+      "img": [
+        "/productImg/mauve/mauve1.jpeg",
+        "/productImg/mauve/mauve2.jpeg",
+        "/productImg/mauve/mauve3.jpeg"
+      ],
+      "category": "gel",
+      "tags":["best", "simple"],
+      "description": "심플하지만 포인트를 원할 때 하는 언발란스 네일",
+      "stock": 15
+    },
+    {
+      "id": 11,
+      "name": "redchain",
+      "price": 10000,
+      "img": [
+        "/productImg/redchain/redchain1.jpeg",
+        "/productImg/redchain/redchain2.jpeg",
+        "/productImg/redchain/redchain3.jpeg",
+        "/productImg/redchain/redchain4.jpeg"
+      ],
+      "category": "gel",
+      "tags":[],
+      "description": "강렬한 무드의 뱀파이어 네일을 원할 때",
+      "stock": 15
+    },
+    {
+      "id": 12,
+      "name": "redwine",
+      "price": 10000,
+      "img": ["/productImg/redwine/redwine1.jpeg"],
+      "category": "gel",
+      "tags":["simple"],
+      "description": "고급스러우면서 심플한 무드의 네일",
+      "stock": 15
+    },
+    {
+      "id": 13,
+      "name": "sparkle",
+      "price": 10000,
+      "img": [
+        "/productImg/sparkle/sparkle1.jpeg",
+        "/productImg/sparkle/sparkle2.jpeg",
+        "/productImg/sparkle/sparkle3.jpeg"
+      ],
+      "category": "gel",
+      "tags":[],
+      "description": "귀엽고 유니크한 쇠맛 네일",
+      "stock": 15
+    },
+    {
+      "id": 14,
+      "name": "whitegradation",
+      "price": 10000,
+      "img": ["/productImg/whitegradation/whitegradation1.jpeg"],
+      "category": "gel",
+      "tags":["simple", "gradation"],
+      "description": "깔끔한 화이트 시럽 그라데이션 네일",
+      "stock": 15
+    },
+    {
+      "id": 15,
+      "name": "wine",
+      "price": 10000,
+      "img": [
+        "/productImg/wine/wine1.jpeg",
+        "/productImg/wine/wine2.jpeg",
+        "/productImg/wine/wine3.jpeg"
+      ],
+      "category": "gel",
+      "tags":["simple"],
+      "description": "발랄하면서 고급스러운 무드를 원할 때",
+      "stock": 15
+    }
+    
+  ]

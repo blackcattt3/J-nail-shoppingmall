@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import HomePage from './page/HomePage'
@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CheckoutPage from './page/CheckoutPage';
 import OrderPage from './page/OrderPage';
+import productsData from "./data/products.json";
 
 function App() {
 
@@ -42,15 +43,24 @@ function App() {
   //   console.log(data);
   // }
 
-  const getProductData = async ()=>{
-    try{
-      const response = await axios.get('http://localhost:4000/products');
-      setProductList(response.data);
-      // console.log(response.data);
-    } catch (error){
-      console.error("데이터 받기 실패", error)
+  // const getProductData = async ()=>{
+  //   try{
+  //     const response = await axios.get('http://localhost:4000/products');
+  //     setProductList(response.data);
+  //     // console.log(response.data);
+  //   } catch (error){
+  //     console.error("데이터 받기 실패", error)
+  //   }
+  // }
+
+  const getProductData = async () => {
+    try {
+      setProductList(productsData);
+    } catch (error) {
+      console.error("데이터 받기 실패", error);
     }
-  }
+  };
+
 
   useEffect(()=>{
     getProductData();
