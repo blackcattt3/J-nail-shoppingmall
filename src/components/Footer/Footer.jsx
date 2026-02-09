@@ -1,6 +1,7 @@
 import React from 'react'
 import './Footer.css';
 import { useNavigate } from 'react-router-dom';
+import logoImg from '../../src/assets/img/main_logo.png';
 
 const Footer = () => {
 
@@ -9,7 +10,7 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div className='footer-content'>
-        <img className='logo-img' src='../../src/assets/img/main_logo.png'
+        <img className='logo-img' src={logoImg}
           onClick={()=>navigate('/')}/>
         <div className='footer-terms'>
           <div>Terms & Conditions</div>
