@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './ProductDetailPage.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { ProductContext} from '../contexts/ProductContext'
 
 const ProductDetailPage = () => {
 
     useEffect(() => {
-  console.log("✅ ProductDetailPage mounted");
-  return () => console.log("❌ ProductDetailPage unmounted");
-}, []);
+        console.log("✅ ProductDetailPage mounted");
+        return () => console.log("❌ ProductDetailPage unmounted");
+    }, []);
 
+    const {productList} = useContext(ProductContext)
     const navigate = useNavigate();
     const {id} = useParams()
     // console.log('상품id: ', id);
@@ -19,27 +21,48 @@ const ProductDetailPage = () => {
     const [currentImg, setCurrentImg] = useState(0);    // 1,2,3
     const [qty, setQty] = useState(1)
 
-    const getProductDetail = async()=>{
-        // let response = await fetch('http://localhost:4000/products/${id}');
-        // let data = await response.json();
-        try{
-            setStatus('loading');
-            const response = await axios.get(`http://localhost:4000/products/${id}`)
-            setProduct(response.data);
-            setStatus('success')
-            console.log(response.data)
-        } catch (error){
-            const status = error?.response?.status;
-            console.log(error);
-            if (status === 404)
-                {setStatus('notFound')}
-            else {setStatus('error')};
-        }
-    }
+    // const getProductDetail = async()=>{
+    //     // let response = await fetch('http://localhost:4000/products/${id}');
+    //     // let data = await response.json();
+    //     try{
+    //         setStatus('loading');
+    //         const response = await axios.get(`http://localhost:4000/products/${id}`)
+    //         setProduct(response.data);
+    //         setStatus('success')
+    //         console.log(response.data)
+    //     } catch (error){
+    //         const status = error?.response?.status;
+    //         console.log(error);
+    //         if (status === 404)
+    //             {setStatus('notFound')}
+    //         else {setStatus('error')};
+    //     }
+    // }
 
-    useEffect(()=>{
-        getProductDetail()
-    }, [id])
+    // useEffect(()=>{
+    //     getProductDetail()
+    // }, [id])
+
+    useEffect(() => {
+        setStatus('loading');
+
+        // productList가 아직 준비 전이면 로딩 유지
+        if (!productList || productList.length === 0) return;
+
+        const found = productList.find((p) => String(p.id) === String(id));
+
+        if (!found) {
+            setStatus('notFound');
+            setProduct(null);
+            return;
+        }
+
+        setProduct(found);
+        setStatus('success');
+        setCurrentImg(0);
+        setQty(1);
+    }, [id, productList]);
+
 
     const name = product?.name;
     const description = product?.description;
@@ -127,9 +150,9 @@ const ProductDetailPage = () => {
   return (
     <div className='detail-wrapper'>
         <div className='detail-container'>
-            <img className='detail-img' src={product?.img[currentImg]}/>
+            <img className='detail-img' src={product?.img?.[currentImg]}/>
             <div>
-                {product.img.map((img, i)=>(
+                {product?.img?.map((img, i)=>(
                     <img className={`detail-img-list ${i==currentImg?'current':''}`} src={img} onClick={()=>{setCurrentImg(i);}}/>
                 ))}
             </div>
