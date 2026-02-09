@@ -14,6 +14,7 @@ const ProductDetailPage = () => {
     const navigate = useNavigate();
     const {id} = useParams()
     // console.log('상품id: ', id);
+    const [status, setStatus] = useState('loading')
     const [product, setProduct] = useState(null)
     const [currentImg, setCurrentImg] = useState(0);    // 1,2,3
     const [qty, setQty] = useState(1)
@@ -22,13 +23,17 @@ const ProductDetailPage = () => {
         // let response = await fetch('http://localhost:4000/products/${id}');
         // let data = await response.json();
         try{
-            setProduct(null)
+            setStatus('loading');
             const response = await axios.get(`http://localhost:4000/products/${id}`)
             setProduct(response.data);
+            setStatus('success')
             console.log(response.data)
         } catch (error){
+            const status = error?.response?.status;
             console.log(error);
-            setProduct(undefined)
+            if (status === 404)
+                {setStatus('notFound')}
+            else {setStatus('error')};
         }
     }
 
@@ -106,18 +111,18 @@ const ProductDetailPage = () => {
     }
 
 
-    if(product === null){
-        return (
-            <div className="loading-screen">
-            <h2>상품 정보를 불러오는 중...</h2>
-            </div>
-        );
+    if (status === 'loading') {
+        return <div className="loading-screen"><h2>상품 정보를 불러오는 중...</h2></div>;
     }
-    if(!product){
-        return <div className='loading-screen'>
-            <h2>상품이 존재하지 않습니다 😭</h2>
-        </div>
+
+    if (status === 'notFound') {
+        return <div className="loading-screen"><h2>상품이 존재하지 않습니다 😭</h2></div>;
     }
+
+    if (status === 'error') {
+        return <div className="loading-screen"><h2>‼️ 서버 오류가 발생했습니다. 다시 시도해주세요 ‼️</h2></div>;
+    }
+
 
   return (
     <div className='detail-wrapper'>
