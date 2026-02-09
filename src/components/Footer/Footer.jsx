@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css';
 import { useNavigate } from 'react-router-dom';
-import logoImg from '../../src/assets/img/main_logo.png';
+import logoImg from '../../assets/img/main_logo.png';
 
 const Footer = () => {
 
