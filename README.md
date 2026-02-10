@@ -2,6 +2,7 @@
 ### 네일 아트 상품을 탐색·구매할 수 있는 React 기반 이커머스 웹 서비스입니다.
 
 #### demo : https://j-nail-shoppingmall.vercel.app/
+(ID: admin / PW: 1234)
 
 ### ✨ 주요 기능
 - 회원가입 / 로그인 (로그인 상태 유지)
