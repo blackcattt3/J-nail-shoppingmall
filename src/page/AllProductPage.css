@@ -1,0 +1,8 @@
+.all-product-wrapper{
+    padding: 20px;
+}
+.product-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

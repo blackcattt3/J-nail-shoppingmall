@@ -8,11 +8,14 @@ const AllProductPage = () => {
   console.log(productList)
 
   return (
-    <div>
+    <div className='all-product-wrapper'>
       <h1>All products</h1>
-      {productList.map((product)=>(
-        <ProductCard product={product}/>
-      ))}
+      <div className='product-wrapper'>
+        {productList.map((product)=>(
+          <ProductCard product={product}/>
+        ))}
+      </div>
+      
     </div>
   )
 }
