@@ -19,6 +19,7 @@
 
 .product-skeleton{
   height: 450px; /* 카드랑 맞추기 */
+  width: 150px;
   border-radius: 8px;
-  background: #fefefe;
+  background: gray;
 }
