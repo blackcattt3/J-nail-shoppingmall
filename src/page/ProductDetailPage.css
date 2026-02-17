@@ -84,3 +84,18 @@
   opacity: 0.3;
   pointer-events: none;
 }
+.product-detail-skeleton{
+    width: 250px;
+    aspect-ratio: 2/3;
+    border-radius: 8px;
+    background: #fefefe;
+}
+.product-details-skeleton{
+    width: 50px;
+    aspect-ratio: 2/3;
+    border-radius: 8px;
+    background: #fefefe;
+}
+.detail-container.loading{
+  min-height: 80vh; /* 또는 실제 화면에 맞게 700px~ */
+}

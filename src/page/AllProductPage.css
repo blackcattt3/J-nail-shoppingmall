@@ -1,8 +1,24 @@
 .all-product-wrapper{
     padding: 20px;
 }
-.product-wrapper{
+/* .product-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
+} */
+
+
+.product-wrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  align-items: start;
+  min-height: 80vh;
+}
+ /* 중요: stretch/center로 인한 재배치 방지 */
+
+.product-skeleton{
+  height: 450px; /* 카드랑 맞추기 */
+  border-radius: 8px;
+  background: #fefefe;
 }

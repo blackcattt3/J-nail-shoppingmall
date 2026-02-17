@@ -20,6 +20,7 @@ const ProductDetailPage = () => {
     const [product, setProduct] = useState(null)
     const [currentImg, setCurrentImg] = useState(0);    // 1,2,3
     const [qty, setQty] = useState(1)
+    // console.log(product, "product")
 
     // const getProductDetail = async()=>{
     //     // let response = await fetch('http://localhost:4000/products/${id}');
@@ -146,15 +147,24 @@ const ProductDetailPage = () => {
         return <div className="loading-screen"><h2>‼️ 서버 오류가 발생했습니다. 다시 시도해주세요 ‼️</h2></div>;
     }
 
+    const isLoading = !product;
+    const imgLength = product?.img?.length || 3;
+    console.log(imgLength)
 
   return (
     <div className='detail-wrapper'>
-        <div className='detail-container'>
-            <img className='detail-img' src={product?.img?.[currentImg]}/>
+        <div className={`detail-container ${isLoading? "loading":""}`}>
+            {isLoading? <div className='product-detail-skeleton'></div>: <img className='detail-img' src={product?.img?.[currentImg]}/>}
             <div>
-                {product?.img?.map((img, i)=>(
+                {
+                    isLoading? Array.from({length: imgLength}).map((_,i)=>(<div key={i} className='product-details-skeleton'/>))
+                    : product?.img?.map((img, i)=>(
                     <img className={`detail-img-list ${i==currentImg?'current':''}`} src={img} onClick={()=>{setCurrentImg(i);}}/>
-                ))}
+                ))
+                }
+                {/* {product?.img?.map((img, i)=>(
+                    <img className={`detail-img-list ${i==currentImg?'current':''}`} src={img} onClick={()=>{setCurrentImg(i);}}/>
+                ))} */}
             </div>
             <p style={{color:'#999999', fontSize:'14px', margin:'20px 0px 0px 0px'}}>{description}</p>
             <h5>{name}</h5>

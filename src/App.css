@@ -7,6 +7,7 @@ html,body,#root{
   margin: 0px;
   padding: 0px;
   height: 100%;
+  scrollbar-gutter: stable;
 }
 
 /* 전체 화면 */
@@ -21,4 +22,5 @@ html,body,#root{
 .main{
   flex:1;   /* header와 footer의 남은 부분을 다 차지해라 */
   /* padding: 30px; */
+  margin-top: 80px;
 }
