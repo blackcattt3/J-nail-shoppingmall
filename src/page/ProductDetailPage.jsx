@@ -135,9 +135,9 @@ const ProductDetailPage = () => {
     }
 
 
-    if (status === 'loading') {
-        return <div className="loading-screen"><h2>상품 정보를 불러오는 중...</h2></div>;
-    }
+    // if (status === 'loading') {
+    //     return <div className="loading-screen"><h2>상품 정보를 불러오는 중...</h2></div>;
+    // }
 
     if (status === 'notFound') {
         return <div className="loading-screen"><h2>상품이 존재하지 않습니다 😭</h2></div>;
@@ -153,15 +153,16 @@ const ProductDetailPage = () => {
 
   return (
     <div className='detail-wrapper'>
-        <div className={`detail-container ${isLoading? "loading":""}`}>
-            {isLoading? <div className='product-detail-skeleton'></div>: <img className='detail-img' src={product?.img?.[currentImg]}/>}
-            <div>
-                {
-                    isLoading? Array.from({length: imgLength}).map((_,i)=>(<div key={i} className='product-details-skeleton'/>))
-                    : product?.img?.map((img, i)=>(
+        <div className='detail-container'>
+            {status==='loading' ? <div className='product-detail-skeleton'></div>: <img className='detail-img' src={product?.img?.[currentImg]}/>}
+            
+            <div className='thumbs'>
+                {status==='loading'? Array.from({ length: 2 }).map((_, i) => (
+                        <div key={i} className="product-details-skeleton" />
+                    ))
+                : product?.img?.map((img, i)=>(
                     <img className={`detail-img-list ${i==currentImg?'current':''}`} src={img} onClick={()=>{setCurrentImg(i);}}/>
-                ))
-                }
+                ))}
                 {/* {product?.img?.map((img, i)=>(
                     <img className={`detail-img-list ${i==currentImg?'current':''}`} src={img} onClick={()=>{setCurrentImg(i);}}/>
                 ))} */}

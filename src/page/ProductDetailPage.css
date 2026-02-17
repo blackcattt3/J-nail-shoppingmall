@@ -96,6 +96,12 @@
     border-radius: 8px;
     background: #fefefe;
 }
+.text-skeleton{
+    width: 200px;
+    aspect-ratio: 5/1;
+    border-radius: 8px;
+    background: gray;
+}
 .detail-container.loading{
   min-height: 80vh; /* 또는 실제 화면에 맞게 700px~ */
 }
