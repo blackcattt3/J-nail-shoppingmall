@@ -26,6 +26,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CheckoutPage from './page/CheckoutPage';
 import OrderPage from './page/OrderPage';
 import productsData from "./data/products.json";
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
@@ -86,6 +87,7 @@ function App() {
           <Header/>
           <div className='main'>
             {/* <button onClick={logout}>로그아웃</button> */}
+            <ScrollToTop/>
             <Routes>
               <Route path='/' element={<HomePage/>}/>
               <Route path='/login' element={<LoginPage/>}/>

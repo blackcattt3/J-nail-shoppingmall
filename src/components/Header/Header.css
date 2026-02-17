@@ -37,9 +37,9 @@
   font-size: 19px;
   cursor : pointer;
 }
-.navBar{
-  max-height: 0px;    /* 밑의 content 내용이랑 겹침 */
-  overflow: hidden; /* 겹치던 내용들 안보이게 */
+/* .navBar{
+  max-height: 0px;  
+  overflow: hidden; 
   transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
   opacity: 0;
 }
@@ -47,7 +47,29 @@
   margin-top: 80px; 
   max-height: 400px;
   opacity: 1;
+} */
+
+.navBar{
+  position: fixed;
+  top: 80px;          /* 헤더 높이 */
+  left: 0;
+  width: 100%;
+  background: white;  /* 안 보이면 꼭 넣어 */
+  z-index: 999;       /* 헤더(1000) 바로 아래 */
+  
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
 }
+
+.navBar.open{
+  max-height: 400px;
+  opacity: 1;
+}
+
+
+
 .navBar ul{
   list-style-type: none;
   padding: 0px;
