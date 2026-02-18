@@ -26,7 +26,7 @@ const HomePage = () => {
             nextIcon={<span className="custom-next">❯</span>}>
             <Carousel.Item interval={3000} pause='hover'>
                 <div className="carousel-item-wrapper">
-                    <ExampleCarouselImage img={firstImg} priority alt="Main banner"/>
+                    <ExampleCarouselImage img={firstImg}/>
                 </div>
             </Carousel.Item>
             <Carousel.Item interval={3000} pause='hover'>
