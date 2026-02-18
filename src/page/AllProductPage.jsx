@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import './AllProductPage.css'
 import ProductCard from '../components/ProductCard/ProductCard';
 import { ProductContext } from '../contexts/ProductContext';
@@ -8,6 +8,9 @@ const AllProductPage = () => {
   console.log(productList)
   const isLoading = !productList || productList.length === 0;
   const SKELETON_COUNT = 12;
+  useEffect(()=>{
+    console.log(isLoading)
+  }, [isLoading])
 
   return (
     <div className='all-product-wrapper'>
